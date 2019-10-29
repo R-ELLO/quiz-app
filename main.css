@@ -1,0 +1,15 @@
+.question-score{
+    display: flex;
+    justify-content:flex-start;
+    list-style: none;
+    /*text-align: center;*/
+}
+
+.top{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.answers{
+    list-style: none;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" description="Quiz App assignment using html, css, javascript, and jquery">
+        <title>Quiz App</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="shortcut icon" href="#">
+    </head>
+    <body>
+        <!--Title page of quiz -->
+        <header>
+            <div class="starting-page">
+                <h1>Quiz of Science</h1>
+                <img class="images correct-img">
+                <input type="button" id="startbtn" value="Start Quiz">
+                <img class="images wrong-img">
+                <h1>Test Your Science Skills!</h1>
+            </div>    
+        </header>
+        <!--Main section/Quiz contents-->
+        <main>
+            <section role="main" class="main-quiz"></section>
+                <!--Question and score count container-->
+                <div>
+                    <ul class="question-score">
+                        <li class="top">Question:
+                            <span class="questionNumber">0</span>/8
+                        </li>
+                        <li class="top">Score:
+                            <span class="score">0</span>/8
+                        </li>
+                    </ul>
+                    <!--Container for question & corresponding image-->
+                </div>
+                <div class="questionContainer">
+                    <img class="questionImg">
+                    <h2 class="question">1. Which element is the most electronegative?</h2>
+                    <ul class="answers">
+                        <li class="answer1"><input type="checkbox">Magnesium</li>
+                        <li class="answer2"><input type="checkbox">Flourine</li>
+                        <li class="answer3"><input type="checkbox">Argon</li>
+                        <li class="answer4"><input type="checkbox">Barium</li>
+                    </ul>
+                    <input type="button" id="submitbtn" value="Submit"> 
+                </div>
+            </section>
+        </main>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+        <script>
+        $( document ).ready(function() {
+          console.log( "document loaded" );
+        });
+        </script>
+        <script src="index.js"></script>
+    </body>
+</html>
