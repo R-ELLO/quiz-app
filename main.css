@@ -13,3 +13,12 @@
 .answers{
     list-style: none;
 }
+
+.correct-answer-container{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.final-score{
+    list-style: none;
+}
