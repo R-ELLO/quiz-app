@@ -13,33 +13,46 @@
     margin: 0;
     padding: 0;
 }
+/* Small screens */
 
-/* Utilities*/
-
-.starting-page{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 80rem;
-    margin: 0 auto;
-}
-
+/*title page font*/
 .title{
-    font-size: 45px;
-}
-
-/*#startbtn{
     display: flex;
     justify-content: center;
     align-items: center;
-}*/
-
-@media screen and (min-width: 550px){
-
-.correct-img{
+    font-size: 45px;
 }
+/*start button location*/
+#startbtn{
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    padding: 5px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+/*start page images*/
+.images{
+    height: 250px;
+    width: 250px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    padding: 5px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+/* Larger screens*/
+
+@media screen and (min-width: 760px){
+    /* Images and buttom section*/
+    .imgs-btn{ /* working on this section to get images to grow/shrint 
+        to the page size change and to fix the button size (look at css flex)*/
+        display: flex;
+        justify-content: space-evenly;
+        flex: 2 1 auto;
+    }
 }
 
 /* rest of wireframe*/
