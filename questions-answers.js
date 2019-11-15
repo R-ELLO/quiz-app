@@ -11,8 +11,7 @@ const STORE = {
                 "Barium"
             ],
             answer: "Flourine",
-            factoid: "Fluorine is the most electronegative element because it has 5 electrons in its 2p shell\.\ 
-            The optimal electron configuration of the 2p orbital contains 6 electrons, so since fluorine is so close to ideal electron configuration, the electrons are held very tightly to the nucleus."
+            factoid: "Fluorine is the most electronegative element because it has 5 electrons in its 2p shell. The optimal electron configuration of the 2p orbital contains 6 electrons, so since fluorine is so close to ideal electron configuration, the electrons are held very tightly to the nucleus."
         },
         //2
         {

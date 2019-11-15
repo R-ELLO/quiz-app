@@ -47,13 +47,16 @@
 
 @media screen and (min-width: 760px){
     /* Images and buttom section*/
-    .imgs-btn{ /* working on this section to get images to grow/shrint 
-        to the page size change and to fix the button size (look at css flex)*/
+    .imgs-btn{ 
         display: flex;
         justify-content: space-evenly;
-        flex: 2 1 auto;
+        align-items: center;
     }
 }
+
+
+
+
 
 /* rest of wireframe*/
 
