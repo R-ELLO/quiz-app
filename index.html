@@ -9,10 +9,10 @@
         <link rel="shortcut icon" href="#">
     </head>
     <body>
-        <!--Title page of quiz -->
         <header>
-            <div class="starting-page">
+            <div class="starting-page"> <!--Title page of quiz -->
                 <h1 class="title">Quiz of Science</h1>
+                <div class="question-score"></div> <!--Question number and score tracker-->
                 <div class="imgs-btn">
                     <img class="images start-img1" src="images/Bill-nye.jpg" alt="Bill Nye The Science Guy">
                     <input type="button" id="startbtn" value="Start Quiz">
@@ -21,7 +21,12 @@
                 <h1 class="title">Test Your Science Skills!</h1>
             </div>    
         </header>
-        <!--Main section/Quiz contents-->
+        <main>
+            <section class="questionbox box altbox"></section> <!--Section questions will popilate-->
+            <section class="response box altbox"></section> <!--Section for correct answer and factoid-->
+            <Section class="final box altbox"></Section> <!--Section for final score and quiz retake-->
+        </main>
+        <!--Main section/Quiz contents Wireframe-->
         <!--<main>
             <section role="main" class="main-quiz"> -->
                 <!--Question and score count container-->

@@ -2,7 +2,7 @@
 
 :root{
     background-color: darkslategray;
-    font-size: 82.5%;
+    font-size: 92.5%;
     color: goldenrod;
 }
 
@@ -22,17 +22,25 @@
     align-items: center;
     font-size: 45px;
 }
-/*start button location*/
+/*start button location and features*/
 #startbtn{
     margin-right: auto;
     margin-left: auto;
     display: flex;
-    padding: 5px;
+    padding: 8px 15px 8px 15px;
+    border-radius: 4px;
     margin-top: 12px;
     margin-bottom: 12px;
     color: darkslategrey;
     font-weight: bolder;
+    border: 1px solid darkslategrey;
 }
+/*hover and shading*/
+#startbtn:hover{
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 goldenrod;
+}
+
 /*start page images*/
 .images{
     height: 250px;
