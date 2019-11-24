@@ -3,6 +3,8 @@
 //Questions and answers section
 
 const STORE = {
+  questionIndex: 0,
+  score: 0,
   questions: [//1
       {
           question: 'Which element is the most electronegative on the periodic table?',
@@ -102,22 +104,18 @@ const STORE = {
   ],
 };
 
-// Variables for quize score and number
-
-let score = 0;
-let currentQuestion = 0;
 
 // Start quiz button on start page and on end page to start quiz
 
 const startQuiz = function() {
     $('#startbtn').on('click', function(event){
-      return populateQuestion();
+      populateQuestion();
     });
 }
 
 //shows question number and current score
 
-fuction ScoreTrack() {
+function ScoreTrack() {
   return score++;
 }
 
@@ -140,10 +138,10 @@ function questionScoreFormat() {
 //Populates the questions
 
 function populateQuestion() {
-  if(currentQuestion < STORE.length) {
-    return questionFormat(currentQuestion);
+  if(STORE.questionIndex < STORE.questions.length) {
+    return questionFormat();
   } else {
-    $('.final').append(resultFactImg());
+    //$('.final').append(resultFactImg());
   };
 }
 
@@ -151,13 +149,13 @@ function questionFormat() {
   let format = $( `
     <form>
       <fieldset>
-        <legend class="question">${STORE[questionIndex].question}</legend>
+        <legend class="question">${STORE.questions[STORE.questionIndex].question}</legend>
       </fieldset>
     </form>`);
 
-  let feildSelector = $(format).find('fieldset');
-
-  STORE[questionIndex].options.forEach(function(answerValue, answerIndex){
+  let fieldSelector = $(format).find('fieldset');
+//debugger
+  STORE.questions[STORE.questionIndex].options.forEach(function(answerValue, answerIndex){
     $(`
     <label for="${answerIndex}">
       <input class="checkbox" type="checkbox" id="${answerIndex}"
@@ -169,6 +167,8 @@ function questionFormat() {
   return format;
     
 }
+
+startQuiz();
 
 //Populates the answer options for the questions
 
