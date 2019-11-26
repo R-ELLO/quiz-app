@@ -104,44 +104,38 @@ const STORE = {
   ],
 };
 
-
 // Start quiz button on start page and on end page to start quiz
 
 const startQuiz = function() {
-    $('#startbtn').on('click', function(event){
-      populateQuestion();
-    });
+  //debugger
+  $('#startbtn').on('click', function(event){
+    $('.starting-page').hide();
+    populateQuestion();
+  });
 }
 
 //shows question number and current score
 
-function ScoreTrack() {
-  return score++;
-}
-
-function questionTrack(){
-  return currentQuestion++;
-}
-
 function questionScoreFormat() {
-  $('.question-score-container').append(`
+  $(`
   <ul class="question-score">
     <li class="top">Question:
-      <span class="questionNumber">0</span>/8
+      <span class="questionNumber">${STORE.questionIndex.length}</span>/8
     </li>
     <li class="top">Score:
-      <span class="score">0</span>/8
+      <span class="score">${STORE.score.length}</span>/8
     </li>
-  </ul>`);
+  </ul>`).appendTo('.question-score-container');
 }
 
 //Populates the questions
 
 function populateQuestion() {
   if(STORE.questionIndex < STORE.questions.length) {
+    //$('.questionbox', '.optionsbox').show();
     return questionFormat();
   } else {
-    //$('.final').append(resultFactImg());
+    //$('.final').append(resultFactImg());  Use appendTo here as well for format of final page!!
   };
 }
 
@@ -168,7 +162,16 @@ function questionFormat() {
     
 }
 
-startQuiz();
+//handler for managing quiz functions
+
+function appControls() {
+  startQuiz();
+  populateQuestion();
+  questionFormat();
+}
+
+$(appControls());
+
 
 //Populates the answer options for the questions
 
