@@ -12,8 +12,6 @@
         <header>
             <div class="starting-page"> <!--Title page of quiz -->
                 <h1 class="title">Quiz of Science</h1>
-                <!--Question number and score tracker-->
-                <div class="question-score-container"></div> 
                 <div class="imgs-btn">
                     <img class="images start-img1" src="images/Bill-nye.jpg" alt="Bill Nye The Science Guy">
                     <input type="button" id="startbtn" value="Start Quiz">
@@ -23,13 +21,43 @@
             </div>    
         </header>
         <main role="main" class="main">
-            <!--Questions will popilate-->
-            <div class="box questionbox"></div>
-            <!--Options to populate-->
-            <div class="box optionsbox"></div>
-            <!--Images correlating with questions to populate-->
-            <div class="box"></div>
-            <!--Section for final score and quiz retake--> 
+            <!--Question number and score tracker-->
+            <div class="question-score-container">
+            <section class="question-answer-section">
+                <!--Questions will popilate-->
+                <div class="box questionbox" id="questionbox"></div>
+                <!--Options to populate-->
+                <div class="box optionsbox">
+                    <div>
+                        <input class="radio" type="radio" name="option" id ="option-1">
+                        <label for="option-1" id="option-1-label"></label>
+                    </div>
+                    <div>
+                        <input class="radio" type="radio" name="option" id ="option-2">
+                        <label for="option-2" id="option-2-label"></label>
+                    </div>
+                    <div>
+                        <input class="radio" type="radio" name="option" id ="option-3">
+                        <label for="option-3" id="option-3-label"></label>
+                    </div>
+                    <div>
+                        <input class="radio" type="radio" name="option" id ="option-4">
+                        <label for="option-4" id="option-4-label"></label>
+                    </div>
+                </div>
+                <input type="button" id="submitbtn" value="Submit">
+            </section>
+            <section class="answer-factoid-section">
+                <!--Correct answer & factoid container-->
+                <div class="correct-answer-container">
+                    <span class="correct-answer"></span>
+                </div>
+                <div class="factoid-container">
+                    <span id="factoid"></span>
+                </div>
+                <input type="button" id="nextqbtn" value="Next Question">
+            </section>
+                <!--Section for final score and quiz retake--> 
             <Section class="final"></Section> 
         </main>
         <!--Main section/Quiz contents Wireframe-->

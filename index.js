@@ -3,8 +3,6 @@
 //Questions and answers section
 
 const STORE = {
-  questionIndex: 0,
-  score: 0,
   questions: [//1
       {
           question: 'Which element is the most electronegative on the periodic table?',
@@ -14,7 +12,7 @@ const STORE = {
               "Argon",
               "Barium"
           ],
-          answer: "Flourine",
+          answer: "Fluorine",
           factoid: "Fluorine is the most electronegative element because it has 5 electrons in its 2p shell. The optimal electron configuration of the 2p orbital contains 6 electrons, so since fluorine is so close to ideal electron configuration, the electrons are held very tightly to the nucleus."
       },
       //2
@@ -104,128 +102,110 @@ const STORE = {
   ],
 };
 
-// Start quiz button on start page and on end page to start quiz
+// Global variables
+
+let q_num = 0;
+let score = 0;
+
+
+// Start quiz button on start page to start quiz
 
 const startQuiz = function() {
-  //debugger
   $('#startbtn').on('click', function(event){
     $('.starting-page').hide();
+    $('.main').show();
     populateQuestion();
   });
+}
+
+/*let nextQuestion = function() {
+  $('#nextqbtn').on('click', function(event) {
+    if()
+    $().toggleClass()
+    //when answer-factoid-section container active so click get's next question
+  });
+}*/
+
+// Moving through questions
+
+/*function nextQuestion() {
+  $('#nextqbtn').on('click', function(event){
+    $('.question-answer-section').show();
+    $('.answer-factoid-section').hide();
+  });
+}*/
+
+// Answer submission button, whether answer correct or not, and factoid
+
+const submitAnswer = function() {
+  $('#submitbtn').on('click', function(event){
+    let answerSelected = $("input[name='option']:checked").val();
+    let answerCorrect = STORE.questions[q_num].answer;
+    let answerFactoid = STORE.questions[q_num].factoid;
+    if(answerSelected == answerCorrect){
+      correctAnswer();
+      score++;
+    }
+    else{
+      wrongAnswer();
+    }
+   if(q_num <= STORE.questions.length){
+    q_num++;
+   }
+  });
+  questionScoreFormat();
+}
+
+// Functions for correct and incorrect answer
+
+function correctAnswer() {
+  $('.question-answer-section').hide();
+  $('.correct-answer-container').prepend("<h2>You got it!</h2>");
+  $('.correct-answer').html(STORE.questions[q_num].answer);
+  $('#factoid').html(STORE.questions[q_num].factoid);
+}
+
+function wrongAnswer() {
+  $('.question-answer-section').hide();
+  $('.correct-answer-container').prepend("<h2>Incorrect!<br> The correct answer is:</h2>");
+  $('.correct-answer').html(STORE.questions[q_num].answer);
+  $('#factoid').html(STORE.questions[q_num].factoid);
 }
 
 //shows question number and current score
 
 function questionScoreFormat() {
-  $(`
+  $('.question-score-container').appendTo(`
   <ul class="question-score">
     <li class="top">Question:
-      <span class="questionNumber">${STORE.questionIndex.length}</span>/8
+      <span class="questionNumber">${STORE.q_num.length}</span>/8
     </li>
     <li class="top">Score:
       <span class="score">${STORE.score.length}</span>/8
     </li>
-  </ul>`).appendTo('.question-score-container');
+  </ul>`);
 }
 
 //Populates the questions
 
 function populateQuestion() {
-  if(STORE.questionIndex < STORE.questions.length) {
-    //$('.questionbox', '.optionsbox').show();
-    return questionFormat();
-  } else {
-    //$('.final').append(resultFactImg());  Use appendTo here as well for format of final page!!
-  };
-}
+  $('#questionbox').html(STORE.questions[q_num].question);
 
-function questionFormat() {
-  let format = $( `
-    <form>
-      <fieldset>
-        <legend class="question">${STORE.questions[STORE.questionIndex].question}</legend>
-      </fieldset>
-    </form>`);
-
-  let fieldSelector = $(format).find('fieldset');
-//debugger
-  STORE.questions[STORE.questionIndex].options.forEach(function(answerValue, answerIndex){
-    $(`
-    <label for="${answerIndex}">
-      <input class="checkbox" type="checkbox" id="${answerIndex}"
-      value="${answerValue}" name="answer" required>
-      <span>${answerValue}</span>
-    </label>`).appendTo(fieldSelector);
-  });
-  $(`<input type="button" id="submitbtn" value="Submit">`).appendTo(fieldSelector);
-  return format;
-    
-}
-
-//handler for managing quiz functions
-
-function appControls() {
-  startQuiz();
-  populateQuestion();
-  questionFormat();
-}
-
-$(appControls());
-
-
-//Populates the answer options for the questions
-
-/*function populateOptions() {
-  let question =  STORE.questions[STORE.currentQuestion];
-  for(let i=0; 1<question.options.length; i++){
-    $('.quiz-options').append(
-      `<input type="checkbox" name="options" id="option${i+1}">
-      <label for="option${i+1}"> ${question.options[i]}</label>
-      <span id="q-r${i+1}"></span>`
-    );
-  }
-}
-
-//correct answer, factoid, and image section
-
-function optionControls() {
-  $('body').on("submit", '.questions-form', function(event) {
-    event.preventDefault();
-    let activeQuest = STORE.questions[store.currentQuestion];
-    let chosenOption = $("input[name=option]:checked").val();
-    if (!chosenOption) {
-      alert("Choose and option");
-      return;
-    }
-
-    let id_num = activeQuest.options.findIndex(i => i ===
-      chosenOption);
-      let id = "#q-r" + ++id_num;
-      $('span').removeClass("right-answer wrong-answer");
-      if(chosenOption === activeQuest.answer) {
-        STORE.score++;
-        $(`${id}`).append(`Great Job!`);
-        $(`${id}`).addClass("right-answer");
-      }
-      else{
-        $(`${id}`).append(`Nice Try <br> The correct answer is "${
-          activeQuest.answer}"`);
-        $(`${id}`).addClass("wrong-answer");
-      }
-
-      STORE.activeQuest++;
-      $("#q-score").text(`Your Score: ${STORE.score}/
-      ${STORE.questions.length}`);
-      $('#answer').hide();
-      $("input[type=button]").attr('disabled', true);
-      $('#next-question').show();
-  });
+  $('.radio').prop('checked', false);
+  $('#option-1').val(STORE.questions[q_num].options[0]);
+  $('#option-1-label').html(STORE.questions[q_num].options[0]);
+  $('#option-2').val(STORE.questions[q_num].options[1]);
+  $('#option-2-label').html(STORE.questions[q_num].options[1]);
+  $('#option-3').val(STORE.questions[q_num].options[2]);
+  $('#option-3-label').html(STORE.questions[q_num].options[2]);
+  $('#option-4').val(STORE.questions[q_num].options[3]);
+  $('#option-4-label').html(STORE.questions[q_num].options[3]);
 }
 
 //end of quiz results and start over option
 
 //checking for quiz end
-function questionControls() {
+/*function questionControls() {
   $('body').on('click', '#next-question', (event) => {
     STORE.currentQuestion === STORE.questions.length?resultFactImg()
     : populateQuestion();
@@ -257,3 +237,17 @@ function newQuiz() {
     populateQuestion();
   });
 }*/
+
+//handler for managing quiz functions
+
+function appControls() {
+  startQuiz();
+  populateQuestion();
+  submitAnswer();
+  //nextQuestion();
+  correctAnswer();
+  wrongAnswer();
+  questionScoreFormat();
+}
+
+$(appControls());
