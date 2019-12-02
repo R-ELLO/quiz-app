@@ -178,12 +178,13 @@ function questionScoreFormat() {
   $('.question-score-container').appendTo(`
   <ul class="question-score">
     <li class="top">Question:
-      <span class="questionNumber">${STORE.q_num.length}</span>/8
+      <span class="questionNumber">${q_num}</span>/${STORE.questions.length}
     </li>
     <li class="top">Score:
       <span class="score">${STORE.score.length}</span>/8
     </li>
   </ul>`);
+  debugger
 }
 
 //Populates the questions
