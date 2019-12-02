@@ -151,9 +151,9 @@ const submitAnswer = function() {
     }
    if(q_num <= STORE.questions.length){
     q_num++;
-   }
+   } //add else to go to final score page, maybe have as function?
   });
-  questionScoreFormat();
+  //questionScoreFormat();
 }
 
 // Functions for correct and incorrect answer
@@ -246,8 +246,6 @@ function appControls() {
   populateQuestion();
   submitAnswer();
   //nextQuestion();
-  correctAnswer();
-  wrongAnswer();
   questionScoreFormat();
 }
 
