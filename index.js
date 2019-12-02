@@ -181,10 +181,10 @@ function questionScoreFormat() {
       <span class="questionNumber">${q_num}</span>/${STORE.questions.length}
     </li>
     <li class="top">Score:
-      <span class="score">${STORE.score.length}</span>/8
+      <span class="score">${score.length}</span>/8
     </li>
   </ul>`);
-  debugger
+  //debugger
 }
 
 //Populates the questions
