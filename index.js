@@ -118,23 +118,6 @@ const startQuiz = function() {
   });
 }
 
-/*let nextQuestion = function() {
-  $('#nextqbtn').on('click', function(event) {
-    if()
-    $().toggleClass()
-    //when answer-factoid-section container active so click get's next question
-  });
-}*/
-
-// Moving through questions
-
-/*function nextQuestion() {
-  $('#nextqbtn').on('click', function(event){
-    $('.question-answer-section').show();
-    $('.answer-factoid-section').hide();
-  });
-}*/
-
 // Answer submission button, whether answer correct or not, and factoid
 
 const submitAnswer = function() {
@@ -144,16 +127,26 @@ const submitAnswer = function() {
     let answerFactoid = STORE.questions[q_num].factoid;
     if(answerSelected == answerCorrect){
       correctAnswer();
-      score++;
     }
     else{
       wrongAnswer();
     }
-   if(q_num <= STORE.questions.length){
-    q_num++;
-   } //add else to go to final score page, maybe have as function?
+
+    if(q_num <= STORE.questions.length){
+      q_num++;
+      nextQuestion();
+    } // else {populate the final page here}
   });
-  //questionScoreFormat();
+}
+
+// Moving through questions
+
+function nextQuestion() {
+  $('#nextqbtn').click(function(){
+    populateQuestion();
+    $('.question-answer-section').show();
+    $('.answer-factoid-section').hide();
+  });
 }
 
 // Functions for correct and incorrect answer
@@ -163,6 +156,9 @@ function correctAnswer() {
   $('.correct-answer-container').prepend("<h2>You got it!</h2>");
   $('.correct-answer').html(STORE.questions[q_num].answer);
   $('#factoid').html(STORE.questions[q_num].factoid);
+  score++;
+  $('#nextqbtn').show();
+  console.log(score);
 }
 
 function wrongAnswer() {
@@ -170,26 +166,27 @@ function wrongAnswer() {
   $('.correct-answer-container').prepend("<h2>Incorrect!<br> The correct answer is:</h2>");
   $('.correct-answer').html(STORE.questions[q_num].answer);
   $('#factoid').html(STORE.questions[q_num].factoid);
+  $('#nextqbtn').show();
 }
 
 //shows question number and current score
 
 function questionScoreFormat() {
-  $('.question-score-container').appendTo(`
+  $('.question-score-container').html(`
   <ul class="question-score">
     <li class="top">Question:
-      <span class="questionNumber">${q_num}</span>/${STORE.questions.length}
+      <span class="questionNumber">${q_num + 1}</span>/${STORE.questions.length}
     </li>
     <li class="top">Score:
-      <span class="score">${score.length}</span>/8
+      <span class="score">${score}</span>/${STORE.questions.length}
     </li>
   </ul>`);
-  //debugger
 }
 
 //Populates the questions
 
 function populateQuestion() {
+  $('#nextqbtn').hide();
   $('#questionbox').html(STORE.questions[q_num].question);
 
   $('.radio').prop('checked', false);
@@ -205,15 +202,7 @@ function populateQuestion() {
 
 //end of quiz results and start over option
 
-//checking for quiz end
-/*function questionControls() {
-  $('body').on('click', '#next-question', (event) => {
-    STORE.currentQuestion === STORE.questions.length?resultFactImg()
-    : populateQuestion();
-  });
-}
-
-function resultFactImg() {
+/*function resultFactImg() {
   let resultsForm = $(`
   <section>
     <h2>Congratulations!</h2> 
