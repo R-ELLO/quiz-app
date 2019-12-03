@@ -143,15 +143,13 @@ const submitAnswer = function() {
 // Moving through questions
 
 function nextQuestion() {
-  //q_num++;
   if(correctAnswer || wrongAnswer == true) {
   $('#nextqbtn').click(function(){
     populateQuestion();
     $('.question-answer-section').show();
   });
-  } else {
-    submitAnswer();
-  }
+  } //else { do I need this part?
+  //}
 }
 
 // Functions for correct and incorrect answer
