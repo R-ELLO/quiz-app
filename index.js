@@ -131,6 +131,7 @@ const submitAnswer = function() {
     else{
       wrongAnswer();
     }
+    $('#nextqbtn').show();
 
     if(q_num <= STORE.questions.length){
       q_num++;
@@ -142,11 +143,15 @@ const submitAnswer = function() {
 // Moving through questions
 
 function nextQuestion() {
+  //q_num++;
+  if(correctAnswer || wrongAnswer == true) {
   $('#nextqbtn').click(function(){
     populateQuestion();
     $('.question-answer-section').show();
-    $('.answer-factoid-section').hide();
   });
+  } else {
+    submitAnswer();
+  }
 }
 
 // Functions for correct and incorrect answer
@@ -157,7 +162,6 @@ function correctAnswer() {
   $('.correct-answer').html(STORE.questions[q_num].answer);
   $('#factoid').html(STORE.questions[q_num].factoid);
   score++;
-  $('#nextqbtn').show();
   console.log(score);
 }
 
@@ -166,7 +170,6 @@ function wrongAnswer() {
   $('.correct-answer-container').prepend("<h2>Incorrect!<br> The correct answer is:</h2>");
   $('.correct-answer').html(STORE.questions[q_num].answer);
   $('#factoid').html(STORE.questions[q_num].factoid);
-  $('#nextqbtn').show();
 }
 
 //shows question number and current score
@@ -234,7 +237,7 @@ function appControls() {
   startQuiz();
   populateQuestion();
   submitAnswer();
-  //nextQuestion();
+  nextQuestion();
   questionScoreFormat();
 }
 
