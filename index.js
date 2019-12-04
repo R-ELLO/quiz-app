@@ -85,7 +85,7 @@ const STORE = {
               "Eting Food"
           ],
           answer: "Photosynthesis",
-          factoid: "Organisms that use light for the energy needed to make their own food are called producers. In contrast, consumers are creatures that eat producers to get energy. While plants are the best-known producers, algae, cyanobacteria, and some protists also make sugar via photosynthesis."
+          factoid: "Organisms that use light for the energy needed to make their own food are called producers. In contrast, consumers are creatures that eat producers to get energy. While plants are the best-known producers, algae, cyanobacteria, and some protists also make sugar via photosynthesis."
       },
       //8
       {
@@ -122,6 +122,9 @@ const startQuiz = function() {
 
 const submitAnswer = function() {
   $('#submitbtn').on('click', function(event){
+    $('.question-answer-section').hide();
+    $('.correct-answer').html(STORE.questions[q_num].answer);
+    $('#factoid').html(STORE.questions[q_num].factoid);
     let answerSelected = $("input[name='option']:checked").val();
     let answerCorrect = STORE.questions[q_num].answer;
     let answerFactoid = STORE.questions[q_num].factoid;
@@ -147,6 +150,7 @@ function nextQuestion() {
   $('#nextqbtn').click(function(){
     populateQuestion();
     $('.question-answer-section').show();
+    $('.answer-factoid-section').hide();
   });
   } //else { do I need this part?
   //}
@@ -155,19 +159,13 @@ function nextQuestion() {
 // Functions for correct and incorrect answer
 
 function correctAnswer() {
-  $('.question-answer-section').hide();
-  $('.correct-answer-container').prepend("<h2>You got it!</h2>");
-  $('.correct-answer').html(STORE.questions[q_num].answer);
-  $('#factoid').html(STORE.questions[q_num].factoid);
+  $('.correct-answer-container').html("<h2>You got it!</h2>");
   score++;
   console.log(score);
 }
 
 function wrongAnswer() {
-  $('.question-answer-section').hide();
-  $('.correct-answer-container').prepend("<h2>Incorrect!<br> The correct answer is:</h2>");
-  $('.correct-answer').html(STORE.questions[q_num].answer);
-  $('#factoid').html(STORE.questions[q_num].factoid);
+  $('.correct-answer-container').html("<h2>Incorrect!<br> The correct answer is:</h2>");
 }
 
 //shows question number and current score
