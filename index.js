@@ -118,57 +118,7 @@ const startQuiz = function() {
   });
 }
 
-// Answer submission button, whether answer correct or not, and factoid
-
-const submitAnswer = function() {
-  $('#submitbtn').on('click', function(event){
-    $('.question-answer-section').hide();
-    $('.correct-answer').html(STORE.questions[q_num].answer);
-    $('#factoid').html(STORE.questions[q_num].factoid);
-    let answerSelected = $("input[name='option']:checked").val();
-    let answerCorrect = STORE.questions[q_num].answer;
-    let answerFactoid = STORE.questions[q_num].factoid;
-    if(answerSelected == answerCorrect){
-      correctAnswer();
-    }
-    else{
-      wrongAnswer();
-    }
-    $('#nextqbtn').show();
-
-    if(q_num <= STORE.questions.length){
-      q_num++;
-      nextQuestion();
-    } // else {populate the final page here}
-  });
-}
-
-// Moving through questions
-
-function nextQuestion() {
-  if(correctAnswer || wrongAnswer == true) {
-  $('#nextqbtn').click(function(){
-    populateQuestion();
-    $('.question-answer-section').show();
-    $('.answer-factoid-section').hide();
-  });
-  } //else { do I need this part?
-  //}
-}
-
-// Functions for correct and incorrect answer
-
-function correctAnswer() {
-  $('.correct-answer-container').html("<h2>You got it!</h2>");
-  score++;
-  console.log(score);
-}
-
-function wrongAnswer() {
-  $('.correct-answer-container').html("<h2>Incorrect!<br> The correct answer is:</h2>");
-}
-
-//shows question number and current score
+//shows question number and current score (complete)
 
 function questionScoreFormat() {
   $('.question-score-container').html(`
@@ -182,48 +132,130 @@ function questionScoreFormat() {
   </ul>`);
 }
 
-//Populates the questions
+//Populates the questions (complete)
 
 function populateQuestion() {
-  $('#nextqbtn').hide();
-  $('#questionbox').html(STORE.questions[q_num].question);
-
-  $('.radio').prop('checked', false);
-  $('#option-1').val(STORE.questions[q_num].options[0]);
-  $('#option-1-label').html(STORE.questions[q_num].options[0]);
-  $('#option-2').val(STORE.questions[q_num].options[1]);
-  $('#option-2-label').html(STORE.questions[q_num].options[1]);
-  $('#option-3').val(STORE.questions[q_num].options[2]);
-  $('#option-3-label').html(STORE.questions[q_num].options[2]);
-  $('#option-4').val(STORE.questions[q_num].options[3]);
-  $('#option-4-label').html(STORE.questions[q_num].options[3]);
+    questionScoreFormat();
+    const qOptHtml = $(`
+    <form>
+        <fieldset>
+            <div class="box questionbox" id="questionbox">
+                <legend class="question">${STORE.questions[q_num].question}</legend>
+            </div>
+            <div class="box optionsbox" id="optionsbox">
+                <input type="radio" name="option">${STORE.questions[q_num].options[0]}
+                <input type="radio" name="option">${STORE.questions[q_num].options[1]}
+                <input type="radio" name="option">${STORE.questions[q_num].options[2]}
+                <input type="radio" name="option">${STORE.questions[q_num].options[3]}
+                <img class="questionImg">
+                <input type="submit" id="submitbtn" value="Submit">
+            </div>
+            <div></div>
+        </fieldset>
+    </form>`);
+    $('.question-answer-section').html(qOptHtml);
+    $('.answer-factoid-section').hide();
 }
+
+// Answer submission button, whether answer correct or not, and factoid
+
+const submitAnswer = function() {
+    $('.question-answer-section').on('submit', function(event){
+        event.preventDefault();
+      $('.question-answer-section').hide();
+      $('.answer-factoid-section').show();
+      let answerSelected = $("input[name='option']:checked").val();
+      let answerCorrect = STORE.questions[q_num].answer;
+      if(!answerSelected){
+          alert("Great science wizard! To unravel this scientific mystery an answer MUST be chosen!");
+          //return;
+      }
+      if(/*answerSelected*/ 'Fluorine' === answerCorrect){
+        score++;
+          correctAnswer();
+      }
+      else{
+          wrongAnswer();
+      }
+    });
+}
+
+//correct and incorrect answers, factoids formatted (complete)
+
+function correctAnswer() {
+    const corAnsFactHtml = $(`
+    <h2>You got it!</h2>
+    <div class="correct-answer-container">
+        <span class="correct-answer">${STORE.questions[q_num].answer}</span>
+    </div>
+    <div class="factoid-container">
+        <span id="factoid">${STORE.questions[q_num].factoid}</span>
+    </div>
+    <input type="button" id="nextqbtn" value="Next Question">`);
+    $('.answer-factoid-section').html(corAnsFactHtml);
+}
+  
+function wrongAnswer() {
+    const wroAnsFactHtml = $(`
+    <h2>Incorrect!<br> The correct answer is:</h2>
+    <div class="correct-answer-container">
+        <span class="correct-answer">${STORE.questions[q_num].answer}</span>
+    </div>
+    <div class="factoid-container">
+        <span id="factoid">${STORE.questions[q_num].factoid}</span>
+    </div>
+    <input type="button" id="nextqbtn" value="Next Question">`);
+$('.answer-factoid-section').html(wroAnsFactHtml);
+}
+  
+// Moving through questions
+
+function questionUpdate() {
+    if(q_num <= STORE.questions.length){
+        q_num++;
+    } // else {populate the final page here}
+}
+
+// Next question button (complete)
+  
+function nextQuestion() {
+    $('.answer-factoid-section').on('click', 
+    '#nextqbtn', function(){
+        $('.answer-factoid-section').hide();
+        questionUpdate()
+        $('.question-answer-section').show();
+        populateQuestion();
+    });
+}
+  
 
 //end of quiz results and start over option
 
 /*function resultFactImg() {
   let resultsForm = $(`
-  <section>
     <h2>Congratulations!</h2> 
     <div class="end-page">
       <ul class="final-score">
         <li class="center">Final Score:
-          <span class="score">0</span>/8
+          <span class="score">0</span>/${STORE.questions.length}
         </li>
       </ul>
       <p>See what you've learned and try again!</p>
-      <input type="button" id="startbtn" value="Start Quiz">
-    </div>   
-  </section>`
-  );
-  STORE.currentQuestion = 0;
-  Store.score = 0;
-  $("main").html(resultsForm);
+      <input type="button" id="restartbtn" value="Restart Quiz">
+    </div>`);
+  //STORE.currentQuestion = 0;
+  //Store.score = 0;
+  $('.final-page-section').html(resultsForm);
 }
+
 //restart quiz
+
 function newQuiz() {
-  $('body').on('click', '#againbtn', (event) => {
-    populateQuestion();
+  $('.final-page-section').on('click', 
+  '#restartbtn', function() {
+    $('main').hide();
+    //score = 0;
+    //q_num = 0;
   });
 }*/
 
@@ -235,6 +267,8 @@ function appControls() {
   submitAnswer();
   nextQuestion();
   questionScoreFormat();
+  //resultFactImg();
+  //newQuiz();
 }
 
 $(appControls());
