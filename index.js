@@ -82,7 +82,7 @@ const STORE = {
               "Mitosis",
               "Photosynthesis",
               "autosynthesis",
-              "Eting Food"
+              "Eating Food"
           ],
           answer: "Photosynthesis",
           factoid: "Organisms that use light for the energy needed to make their own food are called producers. In contrast, consumers are creatures that eat producers to get energy. While plants are the best-known producers, algae, cyanobacteria, and some protists also make sugar via photosynthesis."
