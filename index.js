@@ -107,8 +107,7 @@ const STORE = {
 let q_num = 0;
 let score = 0;
 
-
-// Start quiz button on start page to start quiz
+// Start quiz button on start page to start quiz (complete)
 
 const startQuiz = function() {
   $('#startbtn').on('click', function(event){
@@ -157,20 +156,19 @@ function populateQuestion() {
     $('.answer-factoid-section').hide();
 }
 
-// Answer submission button, whether answer correct or not, and factoid
+// Answer submission button, whether answer correct or not, and factoid (complete)
 
 const submitAnswer = function() {
     $('.question-answer-section').on('submit', function(event){
         event.preventDefault();
-      $('.question-answer-section').hide();
-      $('.answer-factoid-section').show();
       let answerSelected = $("input[name='option']:checked").val();
       let answerCorrect = STORE.questions[q_num].answer;
       if(!answerSelected){
           alert("Great science wizard! To unravel this scientific mystery an answer MUST be chosen!");
-          //return;
+          return;
       }
-      console.log(answerSelected, answerCorrect);
+      $('.question-answer-section').hide();
+      $('.answer-factoid-section').show();
       if(answerSelected == answerCorrect){
         score++;
           correctAnswer();
@@ -212,9 +210,12 @@ $('.answer-factoid-section').html(wroAnsFactHtml);
 // Moving through questions
 
 function questionUpdate() {
-    if(q_num <= STORE.questions.length){
-        q_num++;
-    } // else {populate the final page here}
+  if(q_num <= STORE.questions.length){
+    q_num++;
+  } else {
+    $('main').hide();
+    return rsultFactImg();
+  }
 }
 
 // Next question button (complete)
@@ -223,7 +224,7 @@ function nextQuestion() {
     $('.answer-factoid-section').on('click', 
     '#nextqbtn', function(){
         $('.answer-factoid-section').hide();
-        questionUpdate()
+        //questionUpdate();
         $('.question-answer-section').show();
         populateQuestion();
     });
@@ -232,9 +233,11 @@ function nextQuestion() {
 
 //end of quiz results and start over option
 
-/*function resultFactImg() {
+function resultFactImg() {
+  $('.final-page-section').show();
   let resultsForm = $(`
-    <h2>Congratulations!</h2> 
+    <h2>Congratulations!</h2>
+    <p>You survived the quiz of science!<br> Now you are a science trivia GURU!</p> 
     <div class="end-page">
       <ul class="final-score">
         <li class="center">Final Score:
@@ -251,7 +254,7 @@ function nextQuestion() {
 
 //restart quiz
 
-function newQuiz() {
+/*function newQuiz() {
   $('.final-page-section').on('click', 
   '#restartbtn', function() {
     $('main').hide();
@@ -268,7 +271,8 @@ function appControls() {
   submitAnswer();
   nextQuestion();
   questionScoreFormat();
-  //resultFactImg();
+  //questionUpdate();
+  resultFactImg();
   //newQuiz();
 }
 
