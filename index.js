@@ -143,10 +143,10 @@ function populateQuestion() {
                 <legend class="question">${STORE.questions[q_num].question}</legend>
             </div>
             <div class="box optionsbox" id="optionsbox">
-                <input type="radio" name="option" value="option">${STORE.questions[q_num].options[0]}
-                <input type="radio" name="option" value="option">${STORE.questions[q_num].options[1]}
-                <input type="radio" name="option" value="option">${STORE.questions[q_num].options[2]}
-                <input type="radio" name="option" value="option">${STORE.questions[q_num].options[3]}
+                <input type="radio" name="option" value="${STORE.questions[q_num].options[0]}">${STORE.questions[q_num].options[0]}
+                <input type="radio" name="option" value="${STORE.questions[q_num].options[1]}">${STORE.questions[q_num].options[1]}
+                <input type="radio" name="option" value="${STORE.questions[q_num].options[2]}">${STORE.questions[q_num].options[2]}
+                <input type="radio" name="option" value="${STORE.questions[q_num].options[3]}">${STORE.questions[q_num].options[3]}
                 <img class="questionImg">
                 <input type="submit" id="submitbtn" value="Submit">
             </div>
