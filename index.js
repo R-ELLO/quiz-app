@@ -218,13 +218,13 @@ function questionUpdate() {
   }
 }
 
-// Next question button (complete)
+// Next question button 
   
 function nextQuestion() {
     $('.answer-factoid-section').on('click', 
     '#nextqbtn', function(){
         $('.answer-factoid-section').hide();
-        //questionUpdate();
+        questionUpdate();
         $('.question-answer-section').show();
         populateQuestion();
     });
