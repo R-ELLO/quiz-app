@@ -214,7 +214,7 @@ function questionUpdate() {
     q_num++;
   } else {
     $('main').hide();
-    return rsultFactImg();
+    rsultFactImg();
   }
 }
 
@@ -271,7 +271,6 @@ function appControls() {
   submitAnswer();
   nextQuestion();
   questionScoreFormat();
-  //questionUpdate();
   resultFactImg();
   //newQuiz();
 }
