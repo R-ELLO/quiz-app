@@ -53,6 +53,17 @@
     margin-bottom: 12px;
 }
 
+/*Question options*/
+
+.optionbox{
+}
+
+.options{
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+}
+
 /* Larger screens*/
 
 @media screen and (min-width: 760px){

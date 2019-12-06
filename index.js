@@ -142,10 +142,10 @@ function populateQuestion() {
                 <legend class="question">${STORE.questions[q_num].question}</legend>
             </div>
             <div class="box optionsbox" id="optionsbox">
-                <input type="radio" name="option" value="${STORE.questions[q_num].options[0]}">${STORE.questions[q_num].options[0]}
-                <input type="radio" name="option" value="${STORE.questions[q_num].options[1]}">${STORE.questions[q_num].options[1]}
-                <input type="radio" name="option" value="${STORE.questions[q_num].options[2]}">${STORE.questions[q_num].options[2]}
-                <input type="radio" name="option" value="${STORE.questions[q_num].options[3]}">${STORE.questions[q_num].options[3]}
+                <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[0]}">${STORE.questions[q_num].options[0]}
+                <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[1]}">${STORE.questions[q_num].options[1]}
+                <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[2]}">${STORE.questions[q_num].options[2]}
+                <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[3]}">${STORE.questions[q_num].options[3]}
                 <img class="questionImg">
                 <input type="submit" id="submitbtn" value="Submit">
             </div>
@@ -184,14 +184,12 @@ const submitAnswer = function() {
 function correctAnswer() {
     const corAnsFactHtml = $(`
     <h2>You got it!</h2>
+    <img class="correctImg" src="images/Bill-nye.jpg" alt="Bill Nye The Science Guy">
     <div class="correct-answer-container">
         <span class="correct-answer">${STORE.questions[q_num].answer}</span>
     </div>
     <div class="factoid-container">
         <span id="factoid">${STORE.questions[q_num].factoid}</span>
-    </div>
-    <div>
-    <img class="correctImg" src="images/Bill-nye.jpg" alt="Bill Nye The Science Guy">
     </div>
     <input type="button" id="nextqbtn" value="Next Question">`);
     $('.answer-factoid-section').html(corAnsFactHtml);
@@ -199,15 +197,14 @@ function correctAnswer() {
   
 function wrongAnswer() {
     const wroAnsFactHtml = $(`
-    <h2>Incorrect!<br> The correct answer is:</h2>
+    <h2>Incorrect!</h2>
+    <img class="wrongImg" src="images/Neil-tyson.jpg" alt="Double facepalming Neil Degrasse Tyson">
+    <h2>The correct answer is:</h2>
     <div class="correct-answer-container">
         <span class="correct-answer">${STORE.questions[q_num].answer}</span>
     </div>
     <div class="factoid-container">
         <span id="factoid">${STORE.questions[q_num].factoid}</span>
-    </div>
-    <div>
-    <img class="wrongImg" src="images/Neil-tyson.jpg" alt="Double facepalming Neil Degrasse Tyson">
     </div>
     <input type="button" id="nextqbtn" value="Next Question">`);
 $('.answer-factoid-section').html(wroAnsFactHtml);
@@ -243,6 +240,7 @@ function resultFactImg() {
   $('.final-page-section').show();
   let resultsForm = $(`
     <h2>Congratulations!</h2>
+    <img class="wrongImg" src="images/results-image.jpg" alt="stick figure excitedly holding science implements">
     <p>You survived the quiz of science!<br> Now you are a science trivia GURU!</p> 
     <div class="end-page">
       <ul class="final-score">
@@ -250,9 +248,6 @@ function resultFactImg() {
           <span class="score">${score}</span>/${STORE.questions.length}
         </li>
       </ul>
-      <div>
-    <img class="wrongImg" src="images/results-image.jpg" alt="stick figure excitedly holding science implements">
-    </div>
       <p>See what you've learned and try again!</p>
       <input type="button" id="restartbtn" value="Restart Quiz">
     </div>`);
