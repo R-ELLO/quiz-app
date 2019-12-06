@@ -207,7 +207,7 @@ function wrongAnswer() {
 $('.answer-factoid-section').html(wroAnsFactHtml);
 }
   
-// Moving through questions
+// Moving through questions (complete)
 
 function questionUpdate() {
   if(q_num+1 < STORE.questions.length){
@@ -231,7 +231,7 @@ function nextQuestion() {
 }
   
 
-//end of quiz results and start over option
+//end of quiz results and start over option (complete)
 
 function resultFactImg() {
   $('.final-page-section').show();
@@ -252,18 +252,20 @@ function resultFactImg() {
   $('.final-page-section').html(resultsForm);
 }
 
-//restart quiz
+//restart quiz (complete)
 
-/*function newQuiz() {
+function newQuiz() {
   $('.final-page-section').on('click', 
-  '#restartbtn', function() {
+  '#restartbtn', function(event) {
     $('main').hide();
-    //score = 0;
-    //q_num = 0;
+    $('.starting-page').show();
+    $('.final-page-section').hide();
+    score = 0;
+    q_num = 0;
   });
-}*/
+}
 
-//handler for managing quiz functions
+//handler for managing quiz functions (complete)
 
 function appControls() {
   startQuiz();
@@ -272,7 +274,7 @@ function appControls() {
   nextQuestion();
   questionScoreFormat();
   resultFactImg();
-  //newQuiz();
+  newQuiz();
 }
 
 $(appControls());
