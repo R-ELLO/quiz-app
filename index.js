@@ -170,7 +170,7 @@ const submitAnswer = function() {
           alert("Great science wizard! To unravel this scientific mystery an answer MUST be chosen!");
           //return;
       }
-      if(/*answerSelected*/ 'Fluorine' === answerCorrect){
+      if(answerSelected == answerCorrect){
         score++;
           correctAnswer();
       }
