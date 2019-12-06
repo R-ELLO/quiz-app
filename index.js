@@ -210,11 +210,11 @@ $('.answer-factoid-section').html(wroAnsFactHtml);
 // Moving through questions
 
 function questionUpdate() {
-  if(q_num <= STORE.questions.length){
+  if(q_num+1 < STORE.questions.length){
     q_num++;
   } else {
     $('main').hide();
-    rsultFactImg();
+    resultFactImg();
   }
 }
 
