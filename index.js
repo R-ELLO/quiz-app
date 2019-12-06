@@ -218,7 +218,7 @@ function questionUpdate() {
   }
 }
 
-// Next question button 
+// Next question button (complete)
   
 function nextQuestion() {
     $('.answer-factoid-section').on('click', 
