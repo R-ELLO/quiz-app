@@ -143,10 +143,10 @@ function populateQuestion() {
                 <legend class="question">${STORE.questions[q_num].question}</legend>
             </div>
             <div class="box optionsbox" id="optionsbox">
-                <input type="radio" name="option">${STORE.questions[q_num].options[0]}
-                <input type="radio" name="option">${STORE.questions[q_num].options[1]}
-                <input type="radio" name="option">${STORE.questions[q_num].options[2]}
-                <input type="radio" name="option">${STORE.questions[q_num].options[3]}
+                <input type="radio" name="option" value="option">${STORE.questions[q_num].options[0]}
+                <input type="radio" name="option" value="option">${STORE.questions[q_num].options[1]}
+                <input type="radio" name="option" value="option">${STORE.questions[q_num].options[2]}
+                <input type="radio" name="option" value="option">${STORE.questions[q_num].options[3]}
                 <img class="questionImg">
                 <input type="submit" id="submitbtn" value="Submit">
             </div>
@@ -170,6 +170,7 @@ const submitAnswer = function() {
           alert("Great science wizard! To unravel this scientific mystery an answer MUST be chosen!");
           //return;
       }
+      console.log(answerSelected, answerCorrect);
       if(answerSelected == answerCorrect){
         score++;
           correctAnswer();
@@ -237,7 +238,7 @@ function nextQuestion() {
     <div class="end-page">
       <ul class="final-score">
         <li class="center">Final Score:
-          <span class="score">0</span>/${STORE.questions.length}
+          <span class="score">${score}</span>/${STORE.questions.length}
         </li>
       </ul>
       <p>See what you've learned and try again!</p>
