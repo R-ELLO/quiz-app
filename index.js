@@ -190,6 +190,9 @@ function correctAnswer() {
     <div class="factoid-container">
         <span id="factoid">${STORE.questions[q_num].factoid}</span>
     </div>
+    <div>
+    <img class="correctImg" src="images/Bill-nye.jpg" alt="Bill Nye The Science Guy">
+    </div>
     <input type="button" id="nextqbtn" value="Next Question">`);
     $('.answer-factoid-section').html(corAnsFactHtml);
 }
@@ -202,6 +205,9 @@ function wrongAnswer() {
     </div>
     <div class="factoid-container">
         <span id="factoid">${STORE.questions[q_num].factoid}</span>
+    </div>
+    <div>
+    <img class="wrongImg" src="images/Neil-tyson.jpg" alt="Double facepalming Neil Degrasse Tyson">
     </div>
     <input type="button" id="nextqbtn" value="Next Question">`);
 $('.answer-factoid-section').html(wroAnsFactHtml);
@@ -244,11 +250,12 @@ function resultFactImg() {
           <span class="score">${score}</span>/${STORE.questions.length}
         </li>
       </ul>
+      <div>
+    <img class="wrongImg" src="images/results-image.jpg" alt="stick figure excitedly holding science implements">
+    </div>
       <p>See what you've learned and try again!</p>
       <input type="button" id="restartbtn" value="Restart Quiz">
     </div>`);
-  //STORE.currentQuestion = 0;
-  //Store.score = 0;
   $('.final-page-section').html(resultsForm);
 }
 
