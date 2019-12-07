@@ -109,29 +109,117 @@
     margin-bottom: 12px;
 }
 
+/*question and score tracker container*/
+
+.question-score-container{
+    width: 45%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #514E61;
+    border: 1px solid #aaa;
+}
+
+.question-score{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 600px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.top{
+    display: inline-block;
+    padding:0 2%;
+}
+
 /*Questions & options*/
+
+.question-answer-section{
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600px;
+}
 
 fieldset{
     display: inline-flex;
-    justify-content: flex-start;
-    align-items: center;
     width: 65%;
     padding: 25px;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .questionbox{
-    margin-top: 5px;
     margin-bottom: 12px;
-}
-
-.optionsbox{
-    float: left;
 }
 
 .options{
     margin: 0.5rem; 
-    display: block;
+}
+
+/*correct and incorrect answer pages*/
+
+h2{
+    padding: 1%;
+    text-align: center;
+    margin-right: 45%;
+}
+
+.part-two{
+    text-align: center;
+}
+
+.correct-answer-container{
+    padding: 2%;
+    text-align: center;
+    margin-right: 5%;
+}
+
+.factoid-container{
+    padding: 2%;
+    width: 55%;
+    border-radius: 5px;
+    background-color: #514E61;
+    border: 1px solid #aaa;
+}
+
+.correctImg{
+    margin-right: 15%;
+    float: right;
+    height: 200px;
+    width: 200px;
+}
+
+.wrongImg{
+    margin-right: 8%;
+    float: right;
+    height: 180px;
+    width: 240px;
+}
+
+/*results page features*/
+
+p{
+    font-size: 18px;
+    font-weight: 600px;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.p-two{
+    margin-right: 35%;
+}
+
+.final-score{
+    list-style: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600px;
+    background-color: #514E61;
+    border: 1px solid #aaa;
+    padding: 1%;
+    width: 45%;
+    margin-left: 10%;
+    border-radius: 5px;
 }
 
 /* Larger screens */
@@ -143,10 +231,21 @@ fieldset{
         justify-content: space-evenly;
         align-items: center;
     }
+
+    /*answer container*/
+    .correct-answer{
+        margin-right: 20%;
+        font-size: 18px;
+        font-weight: 600px;
+    }
+
+    /*factoid container*/
+    .factoid-container{
+        margin-left: 2%;
+        font-size: 18px;
+        font-weight: 600px;
+    }
 }
-
-
-
 
 
 
