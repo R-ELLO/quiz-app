@@ -3,7 +3,6 @@
 :root{
     background-color: darkslategray;
     font-size: 92.5%;
-    color: goldenrod;
 }
 
 *{
@@ -170,7 +169,6 @@ h2{
 .correct-answer-container{
     padding: 2%;
     text-align: center;
-    margin-right: 5%;
 }
 
 .factoid-container{
@@ -213,7 +211,6 @@ p{
     list-style: none;
     text-align: center;
     font-size: 18px;
-    font-weight: 600px;
     background-color: #514E61;
     border: 1px solid #aaa;
     padding: 1%;
@@ -232,6 +229,21 @@ p{
         align-items: center;
     }
 
+    #nextqbtn{
+        margin-top: 5%;
+        margin-right: 10%;
+    }
+
+    .correctImg{
+        height: 300px;
+        width: 300px;
+    }
+    
+    .wrongImg{
+        height: 220px;
+        width: 280px;
+    }
+
     /*answer container*/
     .correct-answer{
         margin-right: 20%;
@@ -241,9 +253,26 @@ p{
 
     /*factoid container*/
     .factoid-container{
-        margin-left: 2%;
+        margin-left: 0%;
         font-size: 18px;
-        font-weight: 600px;
+    }
+
+    /*results page*/
+    .result-end{
+        margin-right: 15%;
+    }
+
+    .final-score{
+        margin-right: 60%;
+        margin-left: 20%;
+    }
+
+    .p-one{
+        margin-left: 12%;
+    }
+
+    .p-two{
+        margin-right: 15%;
     }
 }
 
