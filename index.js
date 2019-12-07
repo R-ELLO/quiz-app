@@ -131,29 +131,48 @@ function questionScoreFormat() {
   </ul>`);
 }
 
-//Populates the questions (complete)
+//Populates the questions (complete)  If time and able, add JS for question images!!
 
 function populateQuestion() {
     questionScoreFormat();
     const qOptHtml = $(`
     <form>
         <fieldset>
-            <div class="box questionbox" id="questionbox">
-                <legend class="question">${STORE.questions[q_num].question}</legend>
+          <div id="alert-box">
+            <div class="message">Great science wizard!<br><br>
+              To unravel this scientific mystery an answer MUST be chosen!
+              <button class="yes button">OK</button>
             </div>
-            <div class="box optionsbox" id="optionsbox">
-                <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[0]}">${STORE.questions[q_num].options[0]}
-                <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[1]}">${STORE.questions[q_num].options[1]}
-                <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[2]}">${STORE.questions[q_num].options[2]}
-                <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[3]}">${STORE.questions[q_num].options[3]}
-                <img class="questionImg">
-                <input type="submit" id="submitbtn" value="Submit">
-            </div>
-            <div></div>
+          </div>
+          <div class="box questionbox" id="questionbox">
+            <legend class="question">${STORE.questions[q_num].question}</legend>
+          </div>
+          <div class="box optionsbox" id="optionsbox">
+            <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[0]}">${STORE.questions[q_num].options[0]}
+            <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[1]}">${STORE.questions[q_num].options[1]}
+            <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[2]}">${STORE.questions[q_num].options[2]}
+            <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[3]}">${STORE.questions[q_num].options[3]}
+            <img class="questionImg"> 
+            <input type="submit" id="submitbtn" class="button" value="Submit">
+          </div>
         </fieldset>
     </form>`);
     $('.question-answer-section').html(qOptHtml);
     $('.answer-factoid-section').hide();
+    $('#alert-box').hide();
+}
+
+// Alert button function
+
+function functionAlert(msg, myYes) {
+  const confirmBox = $('#alert-box');
+  confirmBox.find('.message').text(msg);
+  confirmBox.find('.yes').unbind().on('click', function(event) {
+    event.preventDefault();
+    confirmBox.hide();
+  });
+  confirmBox.find('.yes').click(myYes);
+  confirmBox.show();
 }
 
 // Answer submission button, whether answer correct or not, and factoid (complete)
@@ -164,7 +183,7 @@ const submitAnswer = function() {
       let answerSelected = $("input[name='option']:checked").val();
       let answerCorrect = STORE.questions[q_num].answer;
       if(!answerSelected){
-          alert("Great science wizard! To unravel this scientific mystery an answer MUST be chosen!");
+          functionAlert();
           return;
       }
       $('.question-answer-section').hide();
@@ -191,7 +210,7 @@ function correctAnswer() {
     <div class="factoid-container">
         <span id="factoid">${STORE.questions[q_num].factoid}</span>
     </div>
-    <input type="button" id="nextqbtn" value="Next Question">`);
+    <input type="button" id="nextqbtn" class="button" value="Next Question">`);
     $('.answer-factoid-section').html(corAnsFactHtml);
 }
   
@@ -206,7 +225,7 @@ function wrongAnswer() {
     <div class="factoid-container">
         <span id="factoid">${STORE.questions[q_num].factoid}</span>
     </div>
-    <input type="button" id="nextqbtn" value="Next Question">`);
+    <input type="button" id="nextqbtn" class="button" value="Next Question">`);
 $('.answer-factoid-section').html(wroAnsFactHtml);
 }
   
@@ -249,7 +268,7 @@ function resultFactImg() {
         </li>
       </ul>
       <p>See what you've learned and try again!</p>
-      <input type="button" id="restartbtn" value="Restart Quiz">
+      <input type="button" id="restartbtn" class="button" value="Restart Quiz">
     </div>`);
   $('.final-page-section').html(resultsForm);
 }
@@ -272,6 +291,7 @@ function newQuiz() {
 function appControls() {
   startQuiz();
   populateQuestion();
+  functionAlert();
   submitAnswer();
   nextQuestion();
   questionScoreFormat();

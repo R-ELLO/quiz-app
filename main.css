@@ -1,4 +1,4 @@
-/* page wide styling*/
+/* page wide styling */
 
 :root{
     background-color: darkslategray;
@@ -13,35 +13,91 @@
     margin: 0;
     padding: 0;
 }
-/* Small screens */
+
+/*hides main content until called by JS*/
+
+.main{
+    display: none;
+}
+
+/*alert message features*/
+
+#alert-box{
+    display: none;
+    background-color: #514E61;
+    border: 1px solid #aaa;
+    position: fixed;
+    width: 300px;
+    left: 50%;
+    margin-left: -100px;
+    padding: 6px 8px 8px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+/* Small screens and standard features styling */
 
 /*title page font*/
+
 .title{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 45px;
 }
-/*start button location and features*/
+
+.sec-title{
+    text-align: center;
+}
+
+/*start button location*/
+
 #startbtn{
     margin-right: auto;
     margin-left: auto;
+}
+
+/*submit button location*/
+
+#submitbtn{
+    margin-right: 25px;
+    float: right;
+}
+
+/*next question button location*/
+
+#nextqbtn{
+    float: right;
+    margin-right: 6rem;
+}
+
+/*restart quiz button*/
+
+#restartbtn{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*all buttons features*/
+
+.button{
+    margin-top: 12px;
+    margin-bottom: 12px;
     display: flex;
     padding: 8px 15px 8px 15px;
     border-radius: 4px;
-    margin-top: 12px;
-    margin-bottom: 12px;
     color: darkslategrey;
     font-weight: bolder;
     border: 1px solid darkslategrey;
 }
-/*hover and shading*/
-#startbtn:hover{
+
+.button:hover{
     cursor: pointer;
     box-shadow: 0 0.4rem 1.4rem 0 goldenrod;
 }
 
 /*start page images*/
+
 .images{
     height: 250px;
     width: 250px;
@@ -53,21 +109,35 @@
     margin-bottom: 12px;
 }
 
-/*Question options*/
+/*Questions & options*/
 
-.optionbox{
+fieldset{
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 65%;
+    padding: 25px;
+    border-radius: 4px;
+}
+
+.questionbox{
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+
+.optionsbox{
+    float: left;
 }
 
 .options{
-    display: flex;
-    justify-content: space-between;
-    text-align: right;
+    margin: 0.5rem; 
+    display: block;
 }
 
-/* Larger screens*/
+/* Larger screens */
 
 @media screen and (min-width: 760px){
-    /* Images and buttom section*/
+    /*Images and buttom section*/
     .imgs-btn{ 
         display: flex;
         justify-content: space-evenly;
@@ -75,9 +145,8 @@
     }
 }
 
-.main{
-    display: none;
-}
+
+
 
 
 
