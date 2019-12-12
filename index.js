@@ -260,7 +260,7 @@ function resultFactImg() {
   let resultsForm = $(`
     <h2 class="result-end">Congratulations!</h2>
     <img class="wrongImg" src="images/results-image.jpg" alt="stick figure excitedly holding science implements">
-    <p class="p-one">You survived the quiz of science!<br> Now you are a science trivia GURU!</p> 
+    <p class="p-one">You survived the quiz of science!<br><br> Now you are a science trivia GURU!</p> 
     <div class="end-page">
       <ul class="final-score">
         <li class="center">Final Score: <br>
