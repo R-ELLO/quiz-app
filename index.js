@@ -148,10 +148,22 @@ function populateQuestion() {
             <legend class="question">${STORE.questions[q_num].question}</legend>
           </div>
           <div class="box optionsbox" id="optionsbox">
-            <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[0]}">${STORE.questions[q_num].options[0]}<br>
-            <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[1]}">${STORE.questions[q_num].options[1]}<br>
-            <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[2]}">${STORE.questions[q_num].options[2]}<br>
-            <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[3]}">${STORE.questions[q_num].options[3]}<br>
+            <label for="option">
+              <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[0]}">
+              ${STORE.questions[q_num].options[0]}<br>
+            </label>
+            <label for="option">
+              <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[1]}">
+              ${STORE.questions[q_num].options[1]}<br>
+            </label>
+            <label for="option">
+              <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[2]}">
+              ${STORE.questions[q_num].options[2]}<br>
+            </label>
+            <label for="option">
+              <input type="radio" class="options" name="option" value="${STORE.questions[q_num].options[3]}">
+              ${STORE.questions[q_num].options[3]}<br>
+            </label>
             <img class="questionImg"> 
             <input type="submit" id="submitbtn" class="button" value="Submit">
           </div>
