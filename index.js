@@ -222,7 +222,7 @@ function correctAnswer() {
     <div class="factoid-container">
         <span id="factoid">${STORE.questions[q_num].factoid}</span>
     </div>
-    <input type="button" id="nextqbtn" class="button" value="Next Question">`);
+    <input autofocus type="button" id="nextqbtn" class="button" value="Next Question">`);
     $('.answer-factoid-section').html(corAnsFactHtml);
 }
   
@@ -237,7 +237,7 @@ function wrongAnswer() {
     <div class="factoid-container">
         <span id="factoid" class="factoid">${STORE.questions[q_num].factoid}</span>
     </div>
-    <input type="button" id="nextqbtn" class="button" value="Next Question">`);
+    <input autofocus type="button" id="nextqbtn" class="button" value="Next Question">`);
 $('.answer-factoid-section').html(wroAnsFactHtml);
 }
   
